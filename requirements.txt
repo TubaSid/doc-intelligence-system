@@ -1,0 +1,13 @@
+openai
+langchain
+langgraph
+langchain-groq
+pinecone==8.0.0
+python-dotenv
+pypdf2
+beautifulsoup4
+lxml
+fastapi
+uvicorn
+sentence-transformers
+python-multipart
