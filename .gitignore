@@ -1,0 +1,12 @@
+# Environments
+venv/
+.env
+
+# Logs and outputs
+*.log
+api_error.txt
+api_output.txt
+
+# Python
+__pycache__/
+*.pyc
