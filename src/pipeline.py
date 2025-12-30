@@ -12,13 +12,13 @@ def process_document(pdf_path: str, doc_id: str):
     # Step 1: Extract text
     print("Step 1: Extracting text...")
     text = extract_text_from_pdf(pdf_path)
-    print(f"✓ Extracted {len(text)} characters")
+    print(f"Extracted {len(text)} characters")
     
     # Step 2: Chunk text
     print("\nStep 2: Chunking text...")
     # Optimized chunking: larger chunks keep related info together
     chunks = chunk_text(text, chunk_size=2000, overlap=400)
-    print(f"✓ Created {len(chunks)} chunks")
+    print(f"Created {len(chunks)} chunks")
     
     # Step 3: Initialize Pinecone
     print("\nStep 3: Connecting to Pinecone...")
@@ -29,7 +29,7 @@ def process_document(pdf_path: str, doc_id: str):
     upsert_chunks(chunks, doc_id, index)
     
     print(f"\n{'='*60}")
-    print(f"✓ COMPLETE: {doc_id} indexed successfully")
+    print(f"COMPLETE: {doc_id} indexed successfully")
     print(f"{'='*60}\n")
 
 if __name__ == "__main__":

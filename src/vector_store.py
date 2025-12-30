@@ -9,7 +9,7 @@ load_dotenv()
 # Load free local embedding model
 print("Loading embedding model...")
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')  # 384 dimensions, fast and free
-print("✓ Embedding model loaded")
+print("Embedding model loaded")
 
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
@@ -29,9 +29,9 @@ def initialize_index():
                 region="us-east-1"
             )
         )
-        print(f"✓ Created index: {INDEX_NAME}")
+        print(f"Created index: {INDEX_NAME}")
     else:
-        print(f"✓ Index already exists: {INDEX_NAME}")
+        print(f"Index already exists: {INDEX_NAME}")
     
     return pc.Index(INDEX_NAME)
 
@@ -72,15 +72,15 @@ def upsert_chunks(chunks: List[Dict], doc_id: str, index):
     for i in range(0, len(vectors), batch_size):
         batch = vectors[i:i + batch_size]
         index.upsert(vectors=batch)
-        print(f"✓ Uploaded batch {i//batch_size + 1}")
+        print(f"Uploaded batch {i//batch_size + 1}")
     
-    print(f"✓ Stored {len(vectors)} vectors for {doc_id}")
+    print(f"Stored {len(vectors)} vectors for {doc_id}")
 
 if __name__ == "__main__":
     # Test connection
     index = initialize_index()
-    print(f"✓ Connected to index: {INDEX_NAME}")
+    print(f"Connected to index: {INDEX_NAME}")
     
     # Check stats
     stats = index.describe_index_stats()
-    print(f"✓ Index has {stats['total_vector_count']} vectors")
+    print(f"Index has {stats['total_vector_count']} vectors")

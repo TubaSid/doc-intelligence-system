@@ -34,10 +34,10 @@ if __name__ == "__main__":
     pdf_file = "data/raw/tesla_10k.pdf"  # Your PDF here
     
     text = extract_text_from_pdf(pdf_file)
-    print(f"✓ Extracted {len(text)} characters")
+    print(f"Extracted {len(text)} characters")
     print(f"\nFirst 500 chars:\n{text[:500]}")
     print("="*50)
     
     chunks = chunk_text(text)
-    print(f"✓ Created {len(chunks)} chunks")
+    print(f"Created {len(chunks)} chunks")
     print(f"\nChunk 0:\n{chunks[0]['text'][:200]}...")

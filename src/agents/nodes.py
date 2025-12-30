@@ -36,7 +36,7 @@ def router_node(state: dict) -> dict:
     
     decision = response.choices[0].message.content.strip()
     
-    print(f"🔀 Router: {decision}")
+    print(f"Router: {decision}")
     
     state["step_count"] = 1
     return state
@@ -46,7 +46,7 @@ def retriever_node(state: dict) -> dict:
     """Retrieves relevant chunks from vector DB"""
     query = state["query"]
     
-    print(f"🔍 Retrieving chunks for: {query}")
+    print(f"Retrieving chunks for: {query}")
     
     # Get embedding
     query_embedding = get_embedding(query)
@@ -74,7 +74,7 @@ def retriever_node(state: dict) -> dict:
     state["retrieval_score"] = avg_score
     state["step_count"] += 1
     
-    print(f"✓ Retrieved {len(results.matches)} chunks (avg score: {avg_score:.4f})")
+    print(f"Retrieved {len(results.matches)} chunks (avg score: {avg_score:.4f})")
     
     return state
 
@@ -84,7 +84,7 @@ def answerer_node(state: dict) -> dict:
     query = state["query"]
     chunks = state["retrieved_chunks"]
     
-    print(f"🤖 Generating answer...")
+    print(f"Generating answer...")
     
     # Build context
     context = "\n\n".join([
@@ -127,7 +127,7 @@ Answer:"""
     state["answer_confidence"] = confidence
     state["step_count"] += 1
     
-    print(f"✓ Answer generated (confidence: {confidence:.2f})")
+    print(f"Answer generated (confidence: {confidence:.2f})")
     
     return state
 
@@ -137,7 +137,7 @@ def verifier_node(state: dict) -> dict:
     answer = state["answer"]
     chunks = state["retrieved_chunks"]
     
-    print(f"✅ Verifying answer...")
+    print(f"Verifying answer...")
     
     # Build source text
     source_text = "\n".join([c["text"] for c in chunks[:5]])
@@ -167,7 +167,7 @@ Respond with: YES or NO, followed by brief explanation."""
     state["verification_notes"] = verification
     state["step_count"] += 1
     
-    status = "❌ HALLUCINATION DETECTED" if has_hallucination else "✓ Verified"
+    status = "HALLUCINATION DETECTED" if has_hallucination else "Verified"
     print(f"{status}")
     
     return state
@@ -175,7 +175,7 @@ Respond with: YES or NO, followed by brief explanation."""
 # ===== NODE 5: FALLBACK =====
 def fallback_node(state: dict) -> dict:
     """Handles low confidence or failed retrievals"""
-    print(f"⚠️  Fallback triggered")
+    print(f"Fallback triggered")
     
     state["answer"] = f"""I couldn't find reliable information to answer: "{state['query']}"
 

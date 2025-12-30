@@ -23,7 +23,7 @@ def search(query: str, top_k: int = 5):
         include_metadata=True
     )
     
-    print(f"✓ Found {len(results.matches)} results")
+    print(f"Found {len(results.matches)} results")
     
     return results.matches
 
@@ -68,11 +68,11 @@ def ask(query: str):
     chunks = search(query, top_k=5)
     
     if not chunks:
-        print("\n❌ No relevant information found")
+        print("\nNo relevant information found")
         return
     
     # Step 2: Generate answer
-    print("\n🤖 Generating answer...")
+    print("\nGenerating answer...")
     answer = generate_answer(query, chunks)
     
     print(f"\n{'='*70}")
