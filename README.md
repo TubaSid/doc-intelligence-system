@@ -54,5 +54,5 @@ Access over network
 API listens on 0.0.0.0:8000; from another machine use http://<host-ip>:8000/api/v1/query
 
 Contact
-linkedin.com/in/tubasid
-tubaasid@gmail.com
+[linkedin.com/in/tubasid](https://linkedin.com/in/tubasid)
+[tubaasid@gmail.com](mailto:tubaasid@gmail.com)
