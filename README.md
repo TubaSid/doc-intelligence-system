@@ -20,6 +20,9 @@ Quick start
 5. Run API: `python src/api/main.py`
 6. Test: `python test_optimized.py`
 
+Data
+Place tesla_10k.pdf at data/raw/tesla_10k.pdf (not committed to repo), then run `python src/pipeline.py` to index it.
+
 Test results (latest)
 Command: `python test_optimized.py`
 Outcome: 6/6 queries answered successfully
